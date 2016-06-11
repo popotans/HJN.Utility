@@ -14,9 +14,9 @@ using System.Configuration;
 
 namespace YueWen.Utility.Logging
 {
-    public class YWDefaultLog : IYWLog
+    public class HDefaultLog : IYWLog
     {
-        public static YWDefaultLog Logger = YWDefaultLog.CreateFileLogger("Logs");
+        public static HDefaultLog Logger = CreateFileLogger("Logs");
 
         ILog InfoLog;
         ILog ErrorLog;
@@ -28,7 +28,7 @@ namespace YueWen.Utility.Logging
         private string DbConnectionstring { get; set; }
         private string LogTableName = "Log4NetLog";
 
-        private YWDefaultLog(string name)
+        private HDefaultLog(string name)
         {
             this.IncludeFile = true;
             //InfoLog = GetLogger(name, Level.Info);
@@ -36,7 +36,7 @@ namespace YueWen.Utility.Logging
             //DebugLog = GetLogger(name, Level.Debug);
         }
 
-        private YWDefaultLog(string AppID, string name, bool includeDB = false)
+        private HDefaultLog(string AppID, string name, bool includeDB = false)
         {
             this.IncludeFile = true;
             this.IncludeDB = includeDB;
@@ -46,7 +46,7 @@ namespace YueWen.Utility.Logging
             //DebugLog = GetLogger(name, Level.Debug);
         }
 
-        private YWDefaultLog(string AppID, string name, bool includeFile, bool includeDB = false)
+        private HDefaultLog(string AppID, string name, bool includeFile, bool includeDB = false)
         {
             if (includeDB == false && includeFile == false)
             {
@@ -60,7 +60,7 @@ namespace YueWen.Utility.Logging
             //DebugLog = GetLogger(name, Level.Debug);
         }
 
-        private YWDefaultLog(string rootPath, string AppID, string name, bool includeDB = false)
+        private HDefaultLog(string rootPath, string AppID, string name, bool includeDB = false)
         {
             this.IncludeFile = true;
             this.RootPath = rootPath;
@@ -71,7 +71,7 @@ namespace YueWen.Utility.Logging
             //DebugLog = GetLogger(name, Level.Debug);
         }
 
-        private YWDefaultLog(string rootPath, string AppID, string name, bool includeFile, bool includeDB = false)
+        private HDefaultLog(string rootPath, string AppID, string name, bool includeFile, bool includeDB = false)
         {
             if (includeDB == false && includeFile == false)
             {
@@ -86,7 +86,7 @@ namespace YueWen.Utility.Logging
             //DebugLog = GetLogger(name, Level.Debug);
         }
 
-        private YWDefaultLog(string name, bool includeDB)
+        private HDefaultLog(string name, bool includeDB)
         {
             this.IncludeDB = includeDB;
             //InfoLog = GetLogger(name, Level.Info);
@@ -95,55 +95,55 @@ namespace YueWen.Utility.Logging
         }
 
         #region creator
-        public static YWDefaultLog CreateFileLogger(string moduleName)
+        public static HDefaultLog CreateFileLogger(string moduleName)
         {
-            var logger = new YWDefaultLog(moduleName);
+            var logger = new HDefaultLog(moduleName);
             logger.InitLogger(moduleName);
             return logger;
         }
-        public static YWDefaultLog CreateFileLogger(string appcode, string moduleName)
+        public static HDefaultLog CreateFileLogger(string appcode, string moduleName)
         {
-            var logger = new YWDefaultLog(appcode, moduleName, false);
+            var logger = new HDefaultLog(appcode, moduleName, false);
             logger.InitLogger(moduleName);
             return logger;
 
         }
-        public static YWDefaultLog CreateFileLogger(string rootPath, string appcode, string moduleName)
+        public static HDefaultLog CreateFileLogger(string rootPath, string appcode, string moduleName)
         {
-            var logger = new YWDefaultLog(rootPath, appcode, moduleName, false);
+            var logger = new HDefaultLog(rootPath, appcode, moduleName, false);
             logger.InitLogger(moduleName);
             return logger;
         }
 
-        public static YWDefaultLog CreateDBLogger(string moduleName, string tableName, string Connectionstring)
+        public static HDefaultLog CreateDBLogger(string moduleName, string tableName, string Connectionstring)
         {
-            var logger = new YWDefaultLog(moduleName, true);
+            var logger = new HDefaultLog(moduleName, true);
             logger.LogTableName = tableName;
             logger.DbConnectionstring = Connectionstring;
             logger.IncludeFile = false;
             logger.InitLogger(moduleName);
             return logger;
         }
-        public static YWDefaultLog CreateDBLogger(string appcode, string moduleName, string tableName, string Connectionstring)
+        public static HDefaultLog CreateDBLogger(string appcode, string moduleName, string tableName, string Connectionstring)
         {
-            var logger = new YWDefaultLog(appcode, moduleName, false, true);
+            var logger = new HDefaultLog(appcode, moduleName, false, true);
             logger.LogTableName = tableName;
             logger.DbConnectionstring = Connectionstring;
             logger.InitLogger(moduleName);
             return logger;
         }
-        public static YWDefaultLog CreateDBLogger(string rootPath, string appcode, string moduleName, string tableName, string Connectionstring)
+        public static HDefaultLog CreateDBLogger(string rootPath, string appcode, string moduleName, string tableName, string Connectionstring)
         {
-            var logger = new YWDefaultLog(rootPath, appcode, moduleName, false, true);
+            var logger = new HDefaultLog(rootPath, appcode, moduleName, false, true);
             logger.LogTableName = tableName;
             logger.DbConnectionstring = Connectionstring;
             logger.InitLogger(moduleName);
             return logger;
         }
 
-        public static YWDefaultLog CreateFileDBLogger(string moduleName, string tableName, string Connectionstring)
+        public static HDefaultLog CreateFileDBLogger(string moduleName, string tableName, string Connectionstring)
         {
-            var logger = new YWDefaultLog(moduleName, true);
+            var logger = new HDefaultLog(moduleName, true);
             logger.LogTableName = tableName;
             logger.DbConnectionstring = Connectionstring;
             logger.IncludeFile = true;
@@ -151,9 +151,9 @@ namespace YueWen.Utility.Logging
             return logger;
         }
 
-        public static YWDefaultLog CreateFileDBLogger(string appcode, string moduleName, string tableName, string Connectionstring)
+        public static HDefaultLog CreateFileDBLogger(string appcode, string moduleName, string tableName, string Connectionstring)
         {
-            var logger = new YWDefaultLog(appcode, moduleName, true);
+            var logger = new HDefaultLog(appcode, moduleName, true);
             logger.LogTableName = tableName;
             logger.DbConnectionstring = Connectionstring;
             logger.IncludeFile = true;
@@ -161,9 +161,9 @@ namespace YueWen.Utility.Logging
             return logger;
         }
 
-        public static YWDefaultLog CreateFileDBLoggerwithPath(string rootPath, string moduleName, string tableName, string Connectionstring)
+        public static HDefaultLog CreateFileDBLoggerwithPath(string rootPath, string moduleName, string tableName, string Connectionstring)
         {
-            var logger = new YWDefaultLog(moduleName, true);
+            var logger = new HDefaultLog(moduleName, true);
             logger.LogTableName = tableName;
             logger.DbConnectionstring = Connectionstring;
             logger.RootPath = rootPath;
@@ -172,9 +172,9 @@ namespace YueWen.Utility.Logging
             return logger;
         }
 
-        public static YWDefaultLog CreateFileDBLogger(string rootPath, string appcode, string moduleName, string tableName, string Connectionstring)
+        public static HDefaultLog CreateFileDBLogger(string rootPath, string appcode, string moduleName, string tableName, string Connectionstring)
         {
-            var logger = new YWDefaultLog(rootPath, appcode, moduleName, true, true);
+            var logger = new HDefaultLog(rootPath, appcode, moduleName, true, true);
             logger.LogTableName = tableName;
             logger.DbConnectionstring = Connectionstring;
             logger.IncludeFile = true;
@@ -308,112 +308,112 @@ PRIMARY KEY CLUSTERED
                     ParameterName = "@AppId",
                     DbType = System.Data.DbType.String,
                     Size = 4000,
-                    Layout = new Layout2RawLayoutAdapter(new YwCustomLayout("%custom{AppId}"))
+                    Layout = new Layout2RawLayoutAdapter(new HCustomLayout("%custom{AppId}"))
                 });
                 adoAppender.AddParameter(new AdoNetAppenderParameter
                 {
                     ParameterName = "@ModuleName",
                     DbType = System.Data.DbType.String,
                     Size = 4000,
-                    Layout = new Layout2RawLayoutAdapter(new YwCustomLayout("%custom{ModuleName}"))
+                    Layout = new Layout2RawLayoutAdapter(new HCustomLayout("%custom{ModuleName}"))
                 });
                 adoAppender.AddParameter(new AdoNetAppenderParameter
                 {
                     ParameterName = "@LogType",
                     DbType = System.Data.DbType.String,
                     Size = 4000,
-                    Layout = new Layout2RawLayoutAdapter(new YwCustomLayout("%custom{LogType}"))
+                    Layout = new Layout2RawLayoutAdapter(new HCustomLayout("%custom{LogType}"))
                 });
                 adoAppender.AddParameter(new AdoNetAppenderParameter
                 {
                     ParameterName = "@UserID",
                     DbType = System.Data.DbType.String,
                     Size = 4000,
-                    Layout = new Layout2RawLayoutAdapter(new YwCustomLayout("%custom{UserID}"))
+                    Layout = new Layout2RawLayoutAdapter(new HCustomLayout("%custom{UserID}"))
                 });
                 adoAppender.AddParameter(new AdoNetAppenderParameter
                 {
                     ParameterName = "@OperationName",
                     DbType = System.Data.DbType.String,
                     Size = 4000,
-                    Layout = new Layout2RawLayoutAdapter(new YwCustomLayout("%custom{OperationName}"))
+                    Layout = new Layout2RawLayoutAdapter(new HCustomLayout("%custom{OperationName}"))
                 });
                 adoAppender.AddParameter(new AdoNetAppenderParameter
                 {
                     ParameterName = "@Code",
                     DbType = System.Data.DbType.String,
                     Size = 4000,
-                    Layout = new Layout2RawLayoutAdapter(new YwCustomLayout("%custom{Code}"))
+                    Layout = new Layout2RawLayoutAdapter(new HCustomLayout("%custom{Code}"))
                 });
                 adoAppender.AddParameter(new AdoNetAppenderParameter
                 {
                     ParameterName = "@ClientIP",
                     DbType = System.Data.DbType.String,
                     Size = 4000,
-                    Layout = new Layout2RawLayoutAdapter(new YwCustomLayout("%custom{ClientIP}"))
+                    Layout = new Layout2RawLayoutAdapter(new HCustomLayout("%custom{ClientIP}"))
                 });
                 adoAppender.AddParameter(new AdoNetAppenderParameter
                 {
                     ParameterName = "@Uri",
                     DbType = System.Data.DbType.String,
                     Size = 4000,
-                    Layout = new Layout2RawLayoutAdapter(new YwCustomLayout("%custom{Uri}"))
+                    Layout = new Layout2RawLayoutAdapter(new HCustomLayout("%custom{Uri}"))
                 });
                 adoAppender.AddParameter(new AdoNetAppenderParameter
                 {
                     ParameterName = "@Msg",
                     DbType = System.Data.DbType.String,
                     Size = 4000,
-                    Layout = new Layout2RawLayoutAdapter(new YwCustomLayout("%custom{Msg}"))
+                    Layout = new Layout2RawLayoutAdapter(new HCustomLayout("%custom{Msg}"))
                 });
                 adoAppender.AddParameter(new AdoNetAppenderParameter
                 {
                     ParameterName = "@ServerName",
                     DbType = System.Data.DbType.String,
                     Size = 4000,
-                    Layout = new Layout2RawLayoutAdapter(new YwCustomLayout("%custom{ServerName}"))
+                    Layout = new Layout2RawLayoutAdapter(new HCustomLayout("%custom{ServerName}"))
                 });
                 adoAppender.AddParameter(new AdoNetAppenderParameter
                 {
                     ParameterName = "@Title",
                     DbType = System.Data.DbType.String,
                     Size = 4000,
-                    Layout = new Layout2RawLayoutAdapter(new YwCustomLayout("%custom{Title}"))
+                    Layout = new Layout2RawLayoutAdapter(new HCustomLayout("%custom{Title}"))
                 });
                 adoAppender.AddParameter(new AdoNetAppenderParameter
                 {
                     ParameterName = "@InputBody",
                     DbType = System.Data.DbType.String,
                     Size = 4000,
-                    Layout = new Layout2RawLayoutAdapter(new YwCustomLayout("%custom{InputBody}"))
+                    Layout = new Layout2RawLayoutAdapter(new HCustomLayout("%custom{InputBody}"))
                 });
                 adoAppender.AddParameter(new AdoNetAppenderParameter
                 {
                     ParameterName = "@OutputBody",
                     DbType = System.Data.DbType.String,
                     Size = 4000,
-                    Layout = new Layout2RawLayoutAdapter(new YwCustomLayout("%custom{OutputBody}"))
+                    Layout = new Layout2RawLayoutAdapter(new HCustomLayout("%custom{OutputBody}"))
                 });
                 adoAppender.AddParameter(new AdoNetAppenderParameter
                 {
                     ParameterName = "@InvokeTime",
                     DbType = System.Data.DbType.DateTime,
                     Size = 4000,
-                    Layout = new Layout2RawLayoutAdapter(new YwCustomLayout("%custom{InvokeTime}"))
+                    Layout = new Layout2RawLayoutAdapter(new HCustomLayout("%custom{InvokeTime}"))
                 });
                 adoAppender.AddParameter(new AdoNetAppenderParameter
                 {
                     ParameterName = "@ElapsedTimes",
                     DbType = System.Data.DbType.String,
                     Size = 4000,
-                    Layout = new Layout2RawLayoutAdapter(new YwCustomLayout("%custom{ElapsedTimes}"))
+                    Layout = new Layout2RawLayoutAdapter(new HCustomLayout("%custom{ElapsedTimes}"))
                 });
                 adoAppender.AddParameter(new AdoNetAppenderParameter
                 {
                     ParameterName = "@AppDomain",
                     DbType = System.Data.DbType.String,
                     Size = 4000,
-                    Layout = new Layout2RawLayoutAdapter(new YwCustomLayout("%custom{AppDomain}"))
+                    Layout = new Layout2RawLayoutAdapter(new HCustomLayout("%custom{AppDomain}"))
                 });
 
                 adoAppender.ActivateOptions();
@@ -549,20 +549,20 @@ PRIMARY KEY CLUSTERED
 
     public class YWLogHelper
     {
-        public static YWDefaultLog Logger;
+        public static HDefaultLog Logger;
 
         static YWLogHelper()
         {
-            Logger = YWDefaultLog.CreateFileLogger("Log");
+            Logger = HDefaultLog.CreateFileLogger("Log");
         }
 
         #region instance
-        private YWDefaultLog __Logger;
+        private HDefaultLog __Logger;
         public YWLogHelper(string name)
         {
-            __Logger = YWDefaultLog.CreateFileLogger(name);
+            __Logger = HDefaultLog.CreateFileLogger(name);
         }
-        public YWDefaultLog InstanceLogger
+        public HDefaultLog InstanceLogger
         {
             get
             {

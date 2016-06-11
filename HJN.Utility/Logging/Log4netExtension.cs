@@ -14,13 +14,13 @@ namespace YueWen.Utility.Logging
     /// <summary>
     /// 定义log日志布局的参数信息
     /// </summary>
-    public class YwCustomLayout : PatternLayout
+    public class HCustomLayout : PatternLayout
     {
         string pattern = "";
         /// <summary>
         /// 构造函数
         /// </summary>
-        public YwCustomLayout()
+        public HCustomLayout()
         {
             #region 支持开发人员自定义
             //AddConverter("ht", typeof(HashTablePatternConverter));
@@ -34,7 +34,7 @@ namespace YueWen.Utility.Logging
         /// <summary>
         /// 构造函数
         /// </summary>
-        public YwCustomLayout(string pattern)
+        public HCustomLayout(string pattern)
             : base(pattern)
         {
             this.pattern = pattern;
