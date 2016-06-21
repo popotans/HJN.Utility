@@ -5,10 +5,10 @@ using System.Text;
 
 namespace HJN.Dapper
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
-        public string TableName = string.Empty;
-        public List<string> PrimaryKeys = new List<string>();
-        public List<string> IdentityCols = new List<string>();
+        public string __TableName = string.Empty;
+        public List<string> __PrimaryKeys = new List<string>();
+        public List<string> __IdentityKeys = new List<string>();
     }
 }

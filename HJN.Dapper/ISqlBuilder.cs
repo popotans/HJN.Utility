@@ -25,5 +25,8 @@ namespace HJN.Dapper
         /// <param name="t"></param>
         /// <returns></returns>
         string Delete<T>(T t) where T : BaseEntity;
+
+        string GetPagingSQL(string tableName, string key, string fields, string collatingSequence, string condition, int pageIndex, int pageSize);
+        string GetPagingCountSQL(string tableName, string condition);
     }
 }

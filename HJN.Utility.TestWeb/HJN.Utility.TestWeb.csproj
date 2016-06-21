@@ -113,13 +113,16 @@
     <Content Include="Base64Decode.aspx" />
     <Content Include="Base64Encode.aspx" />
     <Content Include="Dappertest\1.aspx" />
+    <Content Include="Dappertest\paging.aspx" />
     <Content Include="Global.asax" />
     <Content Include="json.aspx" />
     <Content Include="ObjectHelper.aspx" />
     <Content Include="packages.config" />
     <Content Include="PageSerailizeHelper.aspx" />
+    <Content Include="Sqlbuilder_MySql\MySqlBUilder.aspx" />
     <Content Include="TestRequestHelper.aspx" />
     <Content Include="TestUnicodeChange.aspx" />
+    <Content Include="TestUnit\WebForm1.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -159,17 +162,26 @@
     <Compile Include="Dappertest\1.aspx.designer.cs">
       <DependentUpon>1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dappertest\paging.aspx.cs">
+      <DependentUpon>paging.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dappertest\paging.aspx.designer.cs">
+      <DependentUpon>paging.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="json.aspx.cs">
       <DependentUpon>json.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="json.aspx.designer.cs">
       <DependentUpon>json.aspx</DependentUpon>
     </Compile>
     <Compile Include="ObjectHelper.aspx.cs">
       <DependentUpon>ObjectHelper.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ObjectHelper.aspx.designer.cs">
       <DependentUpon>ObjectHelper.aspx</DependentUpon>
@@ -182,6 +194,13 @@
       <DependentUpon>PageSerailizeHelper.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sqlbuilder_MySql\MySqlBUilder.aspx.cs">
+      <DependentUpon>MySqlBUilder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sqlbuilder_MySql\MySqlBUilder.aspx.designer.cs">
+      <DependentUpon>MySqlBUilder.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TestRequestHelper.aspx.cs">
       <DependentUpon>TestRequestHelper.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -196,11 +215,26 @@
     <Compile Include="TestUnicodeChange.aspx.designer.cs">
       <DependentUpon>TestUnicodeChange.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TestUnit\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestUnit\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HJN.Dapper.MySql\HJN.Dapper.MySql.csproj">
+      <Project>{c2676965-b297-4330-9f2a-82f022281077}</Project>
+      <Name>HJN.Dapper.MySql</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HJN.Dapper\HJN.Dapper.csproj">
       <Project>{e03c3f4b-a5d1-4e32-a918-7399fbf66c2a}</Project>
       <Name>HJN.Dapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HJN.Utility.TestNunit\HJN.Utility.TestNunit.csproj">
+      <Project>{ffcb55f4-bf08-457e-95ad-8dcf4428aa24}</Project>
+      <Name>HJN.Utility.TestNunit</Name>
     </ProjectReference>
     <ProjectReference Include="..\HJN.Utility\HJN.Utility.csproj">
       <Project>{dba30cc1-5c32-4a84-8440-401cc828bde2}</Project>

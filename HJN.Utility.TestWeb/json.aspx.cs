@@ -11,7 +11,7 @@ namespace YueWen.Utility.TestWeb
 {
     [DataContract]
     [Serializable]
-    public class Person
+    public class _Person111
     {
         [DataMember]
         public string Name { get; set; }
@@ -23,13 +23,13 @@ namespace YueWen.Utility.TestWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Person per = new Person()
+            _Person111 per = new _Person111()
             {
                 Datetime = DateTime.Now,
                 Name = "name",
                 School = "school"
             };
-            Person per2 = new Person()
+            _Person111 per2 = new _Person111()
             {
                 Datetime = DateTime.Now,
                 Name = "name",

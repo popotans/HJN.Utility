@@ -18,7 +18,8 @@ namespace YueWen.Utility.TestWeb.Dappertest
         DapperAdo db;
         protected void Page_Load(object sender, EventArgs e)
         {
-            db = DapperAdo.CreateSqlServerAdo(dbconnstr);
+            db = new SqlServerAdo(dbconnstr);
+            //db = DapperAdo.CreateAdo(dbconnstr);
 
             //GetOne();
 
@@ -73,7 +74,7 @@ namespace YueWen.Utility.TestWeb.Dappertest
             //}
 
             string sql = "delete from [person] where id=@id";
-            int rt = db.Delete(sql, new { id = 3 });
+            int rt = db.Execute(sql, new { id = 3 });
             Response.Write("Delete Rows:" + rt);
         }
 
@@ -85,6 +86,7 @@ namespace YueWen.Utility.TestWeb.Dappertest
         }
     }
 
+    
     public partial class Person
     {
         public int ID { get; set; }
@@ -101,9 +103,9 @@ namespace YueWen.Utility.TestWeb.Dappertest
     {
         public Person()
         {
-            this.TableName = "Person";
-            this.PrimaryKeys.Add("ID");
-            this.IdentityCols.Add("ID");
+            this.__TableName = "Person";
+            this.__PrimaryKeys.Add("ID");
+            this.__IdentityKeys.Add("ID");
         }
     }
 

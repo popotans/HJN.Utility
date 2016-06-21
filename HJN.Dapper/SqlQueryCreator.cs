@@ -59,12 +59,12 @@ namespace HJN.Dapper
         {
             StringBuilder sb = new StringBuilder();
             PropertyInfo[] propertiesArr = t.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            sb.AppendFormat("update {0}{1}{2} set ", ColumnBeginChar, t.TableName, ColumnEndChar);
+            sb.AppendFormat("update {0}{1}{2} set ", ColumnBeginChar, t.__TableName, ColumnEndChar);
             int i = 0;
             foreach (PropertyInfo pi in propertiesArr)
             {
                 i++;
-                if (t.IdentityCols.Contains(pi.Name)) continue;
+                if (t.__IdentityKeys.Contains(pi.Name)) continue;
                 if (i != propertiesArr.Length)
                     sb.AppendFormat("{0}{1}{2}={3}{1},", ColumnBeginChar, pi.Name, ColumnEndChar, ParamPrefix, pi.Name);
                 else
@@ -80,10 +80,10 @@ namespace HJN.Dapper
             }
             sb.Append(" where ");
             i = 0;
-            foreach (string primary in t.PrimaryKeys)
+            foreach (string primary in t.__PrimaryKeys)
             {
                 i++;
-                if (i != t.PrimaryKeys.Count)
+                if (i != t.__PrimaryKeys.Count)
                     sb.AppendFormat("{2}{0}{3}={1} and ", primary, paramValsDic[primary].BuildValueFormat(), ColumnBeginChar, ColumnEndChar);
                 else
                     sb.AppendFormat("{2}{0}{3}={1} ", primary, paramValsDic[primary].BuildValueFormat(), ColumnBeginChar, ColumnEndChar);
