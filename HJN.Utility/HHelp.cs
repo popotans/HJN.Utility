@@ -11,7 +11,7 @@ using YueWen.Utility.Common;
 
 namespace YueWen.Utility
 {
-    public class HelperALL
+    public class HHelp
     {
         public static string GetSubstring(string text, int maxLength)
         {
@@ -126,7 +126,7 @@ namespace YueWen.Utility
             return string.Empty;
         }
 
-      
+
 
         public static bool IsIdCard(string text)
         {

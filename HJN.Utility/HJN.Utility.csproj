@@ -83,7 +83,7 @@
     <Compile Include="Common\TreeHelper.cs" />
     <Compile Include="Common\ValidateHelper.cs" />
     <Compile Include="Common\XMLHelper.cs" />
-    <Compile Include="HelperALL.cs" />
+    <Compile Include="HHelp.cs" />
     <Compile Include="Logging\Log4netExtension.cs" />
     <Compile Include="Common\ModeBindHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
