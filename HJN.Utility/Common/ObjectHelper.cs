@@ -58,8 +58,8 @@ namespace YueWen.Utility.Common
         }
 
         /// <summary>
-        /// 比较两个对象返回值不同的字段,返回一个字典数组，第一个数组为数据源不同字段的值，
-        /// 第二个数组为数据目标不同字段的值
+        /// 比较两个对象返回值不同的字段,返回一个字典数组，第一个数组为数据源不同字段的值，旧值 。
+        /// 第二个数组为数据目标不同字段的值，新值 。
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="tsource"></param>
@@ -84,6 +84,7 @@ namespace YueWen.Utility.Common
             }
             return new Dictionary<string, object>[] { notSamePropertiesValOld, notSamePropertiesValNew };
         }
+
 
 
     }

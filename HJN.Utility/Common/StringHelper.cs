@@ -1156,46 +1156,7 @@ namespace YueWen.Utility.Common
             }
             return text;
         }
-        public static string GetSessionID()
-        {
-            string result = string.Empty;
-            try
-            {
-                string text = string.Empty;
-                byte[] array = new byte[4];
-                RNGCryptoServiceProvider rNGCryptoServiceProvider = new RNGCryptoServiceProvider();
-                rNGCryptoServiceProvider.GetBytes(array);
-                int num = BitConverter.ToInt32(array, 0);
-                num %= 900000;
-                if (num < 0)
-                {
-                    num = -num;
-                }
-                text = (num + 100000).ToString();
-                string text2 = DateTime.Now.Ticks.ToString();
-                string text3 = Process.GetCurrentProcess().Id.ToString();
-                string text4 = AppDomain.GetCurrentThreadId().ToString();
-                IPHostEntry hostEntry = Dns.GetHostEntry(Dns.GetHostName());
-                string text5 = hostEntry.AddressList[0].ToString().Split(new char[]
-		{
-			'.'
-		})[3].ToString();
-                result = string.Concat(new string[]
-		{
-			text2,
-			text3,
-			text4,
-			text,
-			text5
-		});
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return result;
-        }
-
+        
         public static string SafeBase64Encode(string str)
         {
             string srs = Convert.ToBase64String(Encoding.GetEncoding("utf-8").GetBytes(str));

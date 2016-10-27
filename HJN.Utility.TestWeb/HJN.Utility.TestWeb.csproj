@@ -114,11 +114,13 @@
     <Content Include="Base64Encode.aspx" />
     <Content Include="Dappertest\1.aspx" />
     <Content Include="Dappertest\paging.aspx" />
+    <Content Include="getimageUrlList.aspx" />
     <Content Include="Global.asax" />
     <Content Include="json.aspx" />
     <Content Include="ObjectHelper.aspx" />
     <Content Include="packages.config" />
     <Content Include="PageSerailizeHelper.aspx" />
+    <Content Include="sessionid.aspx" />
     <Content Include="Sqlbuilder_MySql\MySqlBUilder.aspx" />
     <Content Include="TestRequestHelper.aspx" />
     <Content Include="TestUnicodeChange.aspx" />
@@ -194,6 +196,13 @@
       <DependentUpon>PageSerailizeHelper.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sessionid.aspx.cs">
+      <DependentUpon>sessionid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sessionid.aspx.designer.cs">
+      <DependentUpon>sessionid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sqlbuilder_MySql\MySqlBUilder.aspx.cs">
       <DependentUpon>MySqlBUilder.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -231,6 +240,10 @@
     <ProjectReference Include="..\HJN.Dapper\HJN.Dapper.csproj">
       <Project>{e03c3f4b-a5d1-4e32-a918-7399fbf66c2a}</Project>
       <Name>HJN.Dapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HJN.Utility.AllInOne\HJN.Utility.AllInOne.csproj">
+      <Project>{56441dbe-92d7-47f5-8edd-c3e5efeadd0b}</Project>
+      <Name>HJN.Utility.AllInOne</Name>
     </ProjectReference>
     <ProjectReference Include="..\HJN.Utility.TestNunit\HJN.Utility.TestNunit.csproj">
       <Project>{ffcb55f4-bf08-457e-95ad-8dcf4428aa24}</Project>
