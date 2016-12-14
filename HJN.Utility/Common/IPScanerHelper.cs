@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace YueWen.Utility.Common
+namespace HJN.Utility.Common
 {
     public class IPScanerHelper
     {

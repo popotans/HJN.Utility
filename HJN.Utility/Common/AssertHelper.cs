@@ -7,7 +7,7 @@ using System.Data;
 //using ApplicationException = global::System.InvalidOperationException;
 //#endif
 
-namespace YueWen.Utility.Common
+namespace HJN.Utility.Common
 {
     /// <summary>
     /// Assert extensions borrowed from Sam's code in DapperTests

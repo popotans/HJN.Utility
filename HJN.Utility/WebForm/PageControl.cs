@@ -6,7 +6,7 @@ using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace YueWen.Utility.WebForm
+namespace HJN.Utility.WebForm
 {
     public class PageControl
     {

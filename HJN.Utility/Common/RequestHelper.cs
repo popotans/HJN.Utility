@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Web;
 
-namespace YueWen.Utility.Common
+namespace HJN.Utility.Common
 {
     public class RequestHelper
     {
@@ -307,6 +307,39 @@ namespace YueWen.Utility.Common
             }
             return result;
         }
+
+        /// <summary>
+        /// 判断IP是否在一个IP段内
+        /// </summary>
+        /// <param name="myIP"></param>
+        /// <param name="startIp"></param>
+        /// <param name="endIp"></param>
+        /// <returns></returns>
+        public static bool IsIPInRange(string myIP, string startIp, string endIp)
+        {
+            if (myIP == "::1") myIP = "127.0.0.1";
+            long myipLong = IP2Long(myIP);
+            long start = IP2Long(startIp);
+            long end = IP2Long(startIp);
+            return myipLong >= start && myipLong <= end;
+        }
+
+        public static long IP2Long(string ip)
+        {
+            //code from www.sharejs.com
+            string[] ipBytes;
+            double num = 0;
+            if (!string.IsNullOrEmpty(ip))
+            {
+                ipBytes = ip.Split('.');
+                for (int i = ipBytes.Length - 1; i >= 0; i--)
+                {
+                    num += ((int.Parse(ipBytes[i]) % 256) * Math.Pow(256, (3 - i)));
+                }
+            }
+            return (long)num;
+        }
+
 
         /// <summary>
         /// 

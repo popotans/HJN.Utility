@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Web.UI.WebControls;
 
-namespace YueWen.Utility.Common
+namespace HJN.Utility.Common
 {
     public class FTPHelper
     {

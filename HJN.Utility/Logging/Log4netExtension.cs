@@ -9,7 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace YueWen.Utility.Logging
+namespace HJN.Utility.Logging
 {
     /// <summary>
     /// 定义log日志布局的参数信息

@@ -8,7 +8,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace YueWen.Utility.Common
+namespace HJN.Utility.Common
 {
     public class DataTableHelper
     {

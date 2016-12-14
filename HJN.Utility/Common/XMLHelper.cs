@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace YueWen.Utility.Common
+namespace HJN.Utility.Common
 {
     public class XMLHelper
     {

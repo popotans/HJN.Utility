@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace YueWen.Utility.Common
+namespace HJN.Utility.Common
 {
     public class FileHelper
     {

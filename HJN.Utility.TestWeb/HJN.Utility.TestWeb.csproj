@@ -241,10 +241,6 @@
       <Project>{e03c3f4b-a5d1-4e32-a918-7399fbf66c2a}</Project>
       <Name>HJN.Dapper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HJN.Utility.AllInOne\HJN.Utility.AllInOne.csproj">
-      <Project>{56441dbe-92d7-47f5-8edd-c3e5efeadd0b}</Project>
-      <Name>HJN.Utility.AllInOne</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HJN.Utility.TestNunit\HJN.Utility.TestNunit.csproj">
       <Project>{ffcb55f4-bf08-457e-95ad-8dcf4428aa24}</Project>
       <Name>HJN.Utility.TestNunit</Name>

@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web.Security;
 
-namespace YueWen.Utility.Common
+namespace HJN.Utility.Common
 {
     public class EncryptTools
     {

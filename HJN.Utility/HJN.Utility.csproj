@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\AppConfig.cs" />
     <Compile Include="Common\AssertHelper.cs" />
     <Compile Include="Common\Base62.cs" />
     <Compile Include="Common\CommonHelper.cs" />
@@ -83,7 +84,6 @@
     <Compile Include="Common\TreeHelper.cs" />
     <Compile Include="Common\ValidateHelper.cs" />
     <Compile Include="Common\XMLHelper.cs" />
-    <Compile Include="HHelp.cs" />
     <Compile Include="Logging\Log4netExtension.cs" />
     <Compile Include="Common\ModeBindHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

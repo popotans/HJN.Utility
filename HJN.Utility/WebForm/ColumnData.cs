@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace YueWen.Utility.WebForm
+namespace HJN.Utility.WebForm
 {
     public partial class ColumnData
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-namespace YueWen.Utility.Common
+namespace HJN.Utility.Common
 {
     internal static class EncodingExtensions
     {

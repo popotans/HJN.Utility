@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 
-namespace YueWen.Utility.Common
+namespace HJN.Utility.Common
 {
     public class ModelBindHelper
     {
@@ -35,7 +35,14 @@ namespace YueWen.Utility.Common
             //  Type type = pi.PropertyType;
             if (type == typeof(int))
             {
-                val = int.Parse(val.ToString());
+                try
+                {
+                    val = int.Parse(val.ToString());
+                }
+                catch (Exception)
+                {
+                    val = -1;
+                }
             }
             else if (type == typeof(long))
                 val = long.Parse(val.ToString());

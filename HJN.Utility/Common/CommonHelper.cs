@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace YueWen.Utility.Common
+namespace HJN.Utility.Common
 {
   public  class CommonHelper
     {

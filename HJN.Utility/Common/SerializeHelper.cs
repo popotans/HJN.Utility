@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
 using System.Xml.Serialization;
 
-namespace YueWen.Utility.Common
+namespace HJN.Utility.Common
 {
     public class SerializeHelper
     {

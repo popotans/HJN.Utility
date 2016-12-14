@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace YueWen.Utility.Common
+namespace HJN.Utility.Common
 {
     public class ExcelHelper
     {     

@@ -10,7 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace YueWen.Utility.Common
+namespace HJN.Utility.Common
 {
     public class StringHelper
     {

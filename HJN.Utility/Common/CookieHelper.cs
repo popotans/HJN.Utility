@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace YueWen.Utility.Common
+namespace HJN.Utility.Common
 {
     public class CookieHelper
     {
@@ -46,7 +46,31 @@ namespace YueWen.Utility.Common
             return result;
         }
 
-      
 
+        public static void WriteEncryptCookie(string strName, string strValue, int expiresMinutes)
+        {
+            strValue = EncryptTools.DESEncrypt(strValue);
+
+            WriteCookie(strName, strValue, expiresMinutes);
+        }
+
+        public static string GetDecryptCookie(string strName)
+        {
+
+            try
+            {
+                string result = GetCookie(strName);
+                if (!string.IsNullOrEmpty(result))
+                {
+                    result = EncryptTools.DESDecrypt(result);
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

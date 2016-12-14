@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace YueWen.Utility.Common
+namespace HJN.Utility.Common
 {
     /// <summary>
     /// Base class used for singletons

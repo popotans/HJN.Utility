@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace YueWen.Utility
+namespace HJN.Utility.Common
 {
     /// <summary>
     /// 汉字拼音转换类
