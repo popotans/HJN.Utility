@@ -17,18 +17,38 @@ namespace HJN.Utility.Common
             {
                 foreach (string key in form.Keys)
                 {
-                    if (string.Compare(pi.Name, key, true) == 0)
-                    {
-                        object val = form[key];
-                        Type type = pi.PropertyType;
-                        val = GetValueByType(type, val);
-                        pi.SetValue(t, val, null);
-                        break;
-                    }
+                    if (string.Compare(pi.Name, key, StringComparison.OrdinalIgnoreCase) != 0) continue;
+                    object val = form[key];
+                    Type type = pi.PropertyType;
+                    val = GetValueByType(type, val);
+                    pi.SetValue(t, val, null);
+                    break;
                 }
             }
             return t;
         }
+
+        public static T BindPropertyValue<T>(NameValueCollection form)
+        {
+            var t = Activator.CreateInstance<T>();
+            if (t == null) return default(T);
+            //  var dic = ObjectHelper.GetPropertiesValuesWithSimpleType<T>(t);
+            System.Reflection.PropertyInfo[] properties = t.GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+            foreach (System.Reflection.PropertyInfo pi in properties)
+            {
+                foreach (string key in form.Keys)
+                {
+                    if (string.Compare(pi.Name, key, StringComparison.OrdinalIgnoreCase) != 0) continue;
+                    object val = form[key];
+                    Type type = pi.PropertyType;
+                    val = GetValueByType(type, val);
+                    pi.SetValue(t, val, null);
+                    break;
+                }
+            }
+            return t;
+        }
+
 
         public static object GetValueByType(Type type, object val)
         {

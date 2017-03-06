@@ -389,6 +389,23 @@ namespace HJN.Utility.Common
             return rs;
         }
 
+        public static long GetRequestLong(string name, long defaultval)
+        {
+            long rs = defaultval;
+            if (!string.IsNullOrEmpty(HttpContext.Current.Request[name]))
+            {
+                try
+                {
+                    rs = long.Parse(HttpContext.Current.Request[name]);
+                }
+                catch
+                {
+
+                }
+            }
+            return rs;
+        }
+
         public static Double GetRequestDouble(string name, Double defaultval)
         {
             Double rs = defaultval;
