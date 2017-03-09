@@ -12,7 +12,7 @@ namespace HJN.Utility.Common
     /// <summary>
     /// Assert extensions borrowed from Sam's code in DapperTests
     /// </summary>
-    static internal class AssertHelper
+    static public class AssertHelper
     {
         public static void IsEqualTo<T>(T obj, T other)
         {
