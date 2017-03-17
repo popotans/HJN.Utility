@@ -22,19 +22,27 @@ namespace HJN.Utility.Common
             }
         }
 
+        public static void IsNotEqualTo(long obj, long other)
+        {
+            if (obj == other)
+            {
+                throw new ArgumentException(string.Format("{0} should not be equals to {1}", obj, other));
+            }
+        }
+
         public static void IsMoreThan(int obj, int other)
         {
-            if (obj < other)
+            if (obj <= other)
             {
                 throw new ArgumentException(string.Format("{0} should be larger than {1}", obj, other));
             }
         }
 
-        public static void IsMoreThan(long obj, int other)
+        public static void IsMoreThan(long obj, int other, String field)
         {
-            if (obj < other)
+            if (obj <= other)
             {
-                throw new ArgumentException(string.Format("{0} should be larger than {1}", obj, other));
+                throw new ArgumentException(string.Format("{0} should be larger than {1}", field, other));
             }
         }
 

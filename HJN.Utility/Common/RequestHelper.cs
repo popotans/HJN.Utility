@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Security;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Web;
 
@@ -440,6 +442,86 @@ namespace HJN.Utility.Common
             return rs;
         }
 
+        public static string HttpPost(string Url, string postDataStr, string encoding)
+        {
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(CheckValidationResult);
+            Encoding enncod = Encoding.GetEncoding(encoding);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+
+            Stream myRequestStream = request.GetRequestStream();
+            StreamWriter myStreamWriter = new StreamWriter(myRequestStream, enncod);
+            myStreamWriter.Write(postDataStr);
+            myStreamWriter.Close();
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Stream myResponseStream = response.GetResponseStream();
+            if (myResponseStream != null)
+            {
+                StreamReader myStreamReader = new StreamReader(myResponseStream, enncod);
+                string retString = myStreamReader.ReadToEnd();
+                myStreamReader.Close();
+                myResponseStream.Close();
+
+                return retString;
+            }
+            return "";
+        }
+
+        public static string HttpGet(string url, string encoding)
+        {
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(CheckValidationResult);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            request.Timeout = 180 * 1000;
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Stream myResponseStream = response.GetResponseStream();
+            if (myResponseStream != null)
+            {
+                StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding(encoding));
+                string retString = myStreamReader.ReadToEnd();
+                myStreamReader.Close();
+                myResponseStream.Close();
+
+                return retString;
+            }
+            return "";
+        }
+
+        /// <summary>
+        /// 请求地址
+        /// </summary>
+        /// <param name="url">url</param>
+        /// <param name="encoding">编码</param>
+        /// <param name="timeoutmillionseconds">超时时间</param>
+        /// <returns></returns>
+        public static string HttpGet(string url, string encoding, int timeoutmillionseconds)
+        {
+            if (timeoutmillionseconds <= 0) timeoutmillionseconds = 60 * 1000;
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(CheckValidationResult);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            request.Timeout = timeoutmillionseconds;
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Stream myResponseStream = response.GetResponseStream();
+            if (myResponseStream != null)
+            {
+                StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding(encoding));
+                string retString = myStreamReader.ReadToEnd();
+                myStreamReader.Close();
+                myResponseStream.Close();
+
+                return retString;
+            }
+            return "";
+        }
+
+        protected static bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
+        {   // 总是接受  
+            return true;
+        }
+
         public static String GetRequestString(string name, String defaultval)
         {
             String rs = defaultval;
@@ -472,8 +554,10 @@ namespace HJN.Utility.Common
                 }
                 response.Close();
             }
-            catch
-            { }
+            catch (Exception)
+            {
+                throw;
+            }
             return strMsg;
         }
 
